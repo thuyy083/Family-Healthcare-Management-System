@@ -1,0 +1,149 @@
+﻿@model HTQL_DV_Y_TE_GIA_DINH.BENH_NHAN
+
+@{
+    ViewBag.Title = "DetailsBS";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .icon1 {
+        padding: 7px 12px;
+        color: #646464;
+        background-color: #f0f1f3;
+        font-size: 18px;
+        border-radius: 4px;
+    }
+
+        .icon1:hover {
+            background-color: #00c6a9;
+            color: #fff;
+        }
+
+    h2 {
+        text-align: left;
+    }
+
+    h5 {
+        text-align: left;
+    }
+
+    .my-3 {
+        text-decoration: none;
+        color: #008a6e;
+        font-weight: bold;
+    }
+</style>
+
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row">
+        <div class="col-8">
+
+            <div class="mt-2">
+                <h5>BỆNH NHÂN</h5>
+                <h2>@Html.DisplayFor(model => model.Ho_Ten)</h2>
+            </div>
+
+            <div class="mt-2">Giới tính: @(Model.Gioi_Tinh ? "Nam" : "Nữ")</div>
+            <div class="mt-2">Số BHYT: @Html.DisplayFor(model => model.So_BHYT)</div>
+            <div class="mt-2">Số CCCD:  @Html.DisplayFor(model => model.So_CCCD)</div>
+            <div class="mt-2">
+                Số điện thoại: @Html.DisplayFor(model => model.So_Dien_Thoai)
+            </div>
+            <div class="mt-2">
+                Ngày sinh: @Model.Ngay_Sinh.ToString("dd/MM/yyyy")
+            </div>
+
+            <div class="mt-2">
+                Địa chỉ: @Html.DisplayFor(model => model.Dia_Chi)
+            </div>
+            <div class="mt-4">
+                <a href="@Url.Action("EditBN", new { id = Model.Ma_TK })" class="icon1"><i class="far fa-edit"></i></a>
+                <a href="@Url.Action("DeleteBN", new { id = Model.Ma_TK })" class="icon1" onclick="return confirmDelete();"><i class="bi bi-trash"></i></a>
+
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+
+
+<div class="container-fluid">
+    <a href="@Url.Action("getListBS", "QLBS")" class="my-3">Quay về</a>
+
+    @if (Model.SO_THEO_DOI_SUC_KHOE.Count > 0)
+    {
+        <h2>SỔ THEO DÕI SỨC KHỎE</h2>
+        <table class="table table-bordered" style="border: 1px solid; border-color: #00c6a9;">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        STT
+                    </th>
+                    <th scope="col">
+                        Bác sĩ
+                    </th>
+                    <th scope="col">
+                        Thời gian
+                    </th>
+                    <th scope="col">
+                        Các thông số sức khỏe
+                    </th>
+                    <th scope="col">
+                        Đơn thuốc
+                    </th>
+                    <th scope="col">
+                        Chỉ định dinh dưỡng
+                    </th>
+                    <th scope="col">
+                        Ghi chú
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ int i = 1;}
+                @foreach (var item in Model.SO_THEO_DOI_SUC_KHOE)
+                {
+                    <tr>
+                        <td>
+                            @i
+                        </td>
+                        <td>
+                            @item.BAC_SI_GIA_DINH.Ho_Ten
+                        </td>
+                        <td>
+                            @item.Ngay_Gio.ToString("dd/MM/yyyy")
+                        </td>
+                        <td>
+                            @item.Cac_Thong_So_Suc_Khoe
+                        </td>
+                        <td>
+                            @item.Don_Thuoc
+                        </td>
+                        <td>
+                            @item.Chi_Dinh_Dinh_Duong
+                        </td>
+                        <td>
+                            @item.Ghi_Chu
+                        </td>
+                        @{ i++;}
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    }
+    else
+    {
+        <p class="fst-italic" style="font:bold;">Chưa có sổ theo dõi sức khỏe nào được ghi nhận.</p>
+    }
+
+
+</div>
+
+<script>
+    function confirmDelete() {
+        return confirm('Bạn có chắc chắn muốn xóa không?');
+    }
+</script>

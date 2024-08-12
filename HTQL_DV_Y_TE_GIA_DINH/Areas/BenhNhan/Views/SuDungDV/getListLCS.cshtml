@@ -1,0 +1,138 @@
+﻿@model IEnumerable<HTQL_DV_Y_TE_GIA_DINH.LICH_CHAM_SOC>
+
+@{
+    ViewBag.Title = "getListLCS";
+    Layout = "~/Areas/BenhNhan/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .details {
+        text-decoration: none;
+        color: #008a6e;
+        font-weight: bold;
+    }
+
+    .table-striped-custom tbody tr:nth-child(odd) td {
+        background-color: #C6F2E7;
+    }
+
+    .table-striped-custom tbody tr:nth-child(even) td {
+        background-color: #C6F2E7;
+    }
+
+    .nut {
+        background-color: #00b39d;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+        .nut:hover {
+            background-color: #00a48f;
+        }
+</style>
+<div class="container">
+    <h2>Dịch vụ chăm sóc người bệnh</h2>
+
+    <p>
+        <button type="button" onclick="window.location.href='@Url.Action("AddLichChamSoc", "SuDungDV")'" class="btn nut">Đặt lịch chăm sóc</button>
+    </p>
+    <table class="table table-light table-striped table-striped-custom">
+        <thead>
+            <tr>
+                <th>
+                    <label>STT</label>
+                </th>
+                <th>
+                    <label>Ngày bắt đầu</label>
+                </th>
+                <th>
+                    <label>Số ngày thuê</label>
+                </th>
+                <th>
+                    <label>Chỉ định nhân viên</label>
+                </th>
+                <th>
+                    <label>Tên nhân viên chỉ định</label>
+                </th>
+                <th>
+                    <label>Mô tả bệnh lý</label>
+                </th>
+                <th>
+                    <label>Hộ tên bệnh nhân</label>
+                </th>
+                <th>
+                    <label>Địa chỉ</label>
+                </th>
+                <th>
+                    <label>Số điện thoại</label>
+                </th>
+                <th>
+                    <label>Trạng thái</label>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        @{ int i = 1;}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @i
+                </td>
+                <td>
+                    @item.Ngay_Bat_Dau.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.So_Ngay_Thue)
+                </td>
+                <td>
+                    @(item.Yeu_Cau_Chi_Dinh_NVCS ? "Có" : "Không")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ten_NVCS_Muon_Chon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mo_Ta_Benh_Ly)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ho_Ten_Benh_Nhan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dia_Chi_Noi_Cham_Soc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.So_Dien_Thoai_Nguoi_Thue)
+                </td>
+                <td>
+                    @(item.Trang_Thai ? "Đã duyệt" : "Chưa duyệt")
+                </td>
+                <td>
+                    @if (!item.Trang_Thai)
+                    {
+                        <a class="details" href="@Url.Action("EditLCS", "SuDungDV", new { id = item.Ma_Lich })">Sửa</a>
+                        <br />
+                        <a href="@Url.Action("XoaLich", new { id = item.Ma_Lich })" class="details" onclick="return confirmDelete();">Xóa</a>
+                    }
+
+                    @if (item.Trang_Thai)
+                    {
+                        <a class="details" href="@Url.Action("DetailsLCS", "SuDungDV", new { id = item.Ma_Lich })">Xem chi tiết</a>
+
+                    }
+
+
+                </td>
+                @{ i++;}
+            </tr>
+        }
+
+    </table>
+</div>
+
+<script>
+    function confirmDelete() {
+        return confirm('Bạn có chắc chắn muốn xóa không?');
+    }
+</script>

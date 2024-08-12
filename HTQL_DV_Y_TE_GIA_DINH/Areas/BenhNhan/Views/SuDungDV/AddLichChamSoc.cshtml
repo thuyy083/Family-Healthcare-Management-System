@@ -1,0 +1,150 @@
+﻿@model HTQL_DV_Y_TE_GIA_DINH.LICH_CHAM_SOC
+
+@{
+    ViewBag.Title = "AddLichChamSoc";
+    Layout = "~/Areas/BenhNhan/Views/Shared/_Layout.cshtml";
+}
+<style>
+    input {
+        max-width: 100%;
+    }
+    select{
+        max-width: 100%;
+    }
+    .nut {
+        background-color: #00b39d;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+        .nut:hover {
+            background-color: #00a48f;
+        }
+</style>
+<div class="container my-2 p-2">
+    <h4>ĐẶT LỊCH CHĂM SÓC BỆNH NHÂN</h4>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row col-md-6 g-2 mx-auto shadow p-4">
+            <hr />
+            <div class="form_container">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+                <div class="col-12">
+                    <label class="form-label">Tên dịch vụ</label>
+                    <div>
+                        @Html.DropDownList("Ma_Dich_Vu", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Ma_Dich_Vu, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label">Ngày bắt đầu</label>
+                    <div>
+                        @Html.EditorFor(model => model.Ngay_Bat_Dau, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                        @Html.ValidationMessageFor(model => model.Ngay_Bat_Dau, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label">Số ngày thuê</label>
+                    <div>
+                        @Html.EditorFor(model => model.So_Ngay_Thue, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.So_Ngay_Thue, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label">Bạn có muốn chỉ định nhân viên chăm sóc không?</label>
+                    <div>
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(model => model.Yeu_Cau_Chi_Dinh_NVCS, true, new { id = "Yeu_Cau_Chi_Dinh_NVCS_Yes" }) Có
+                        </label>
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(model => model.Yeu_Cau_Chi_Dinh_NVCS, false, new { id = "Yeu_Cau_Chi_Dinh_NVCS_No" }) Không
+                        </label>
+                        @Html.ValidationMessageFor(model => model.Yeu_Cau_Chi_Dinh_NVCS, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-12" id="Ten_NVCS_Muon_Chon_Field">
+                    <label class="form-label">Tên nhân viên muốn chỉ định</label>
+                    <div>
+                        @Html.EditorFor(model => model.Ten_NVCS_Muon_Chon, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Ten_NVCS_Muon_Chon, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="col-12">
+                    <label class="form-label">Mô tả bệnh lý</label>
+                    <div>
+                        @Html.EditorFor(model => model.Mo_Ta_Benh_Ly, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Mo_Ta_Benh_Ly, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label">Họ tên bệnh nhân</label>
+                    <div>
+                        @Html.EditorFor(model => model.Ho_Ten_Benh_Nhan, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Ho_Ten_Benh_Nhan, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label">Địa chỉ</label>
+                    <div>
+                        @Html.EditorFor(model => model.Dia_Chi_Noi_Cham_Soc, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Dia_Chi_Noi_Cham_Soc, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label">Số điện thoại liên hệ</label>
+                    <div>
+                        @Html.EditorFor(model => model.So_Dien_Thoai_Nguoi_Thue, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.So_Dien_Thoai_Nguoi_Thue, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="col-12">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Đặt lịch" class="btn nut" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+
+<div>
+    <button type="button" onclick="window.location.href='@Url.Action("getListLCS", "SuDungDV")'" class="btn nut">Quay lại</button>
+</div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#Yeu_Cau_Chi_Dinh_NVCS_Yes").change(function () {
+            if ($(this).is(":checked")) {
+                $("#Ten_NVCS_Muon_Chon_Field").show();
+            }
+        });
+
+        $("#Yeu_Cau_Chi_Dinh_NVCS_No").change(function () {
+            if ($(this).is(":checked")) {
+                $("#Ten_NVCS_Muon_Chon_Field").hide();
+            }
+        });
+    });
+
+
+</script>
+

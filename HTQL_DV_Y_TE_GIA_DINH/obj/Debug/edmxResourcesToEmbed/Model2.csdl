@@ -1,0 +1,549 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="csdl_HTQLModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BAC_SI_GIA_DINH">
+    <Key>
+      <PropertyRef Name="Ma_TK" />
+    </Key>
+    <Property Name="Ma_TK" Type="Int32" Nullable="false" />
+    <Property Name="Ma_Quyen" Type="Int32" Nullable="false" />
+    <Property Name="Ho_Ten" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ngay_Sinh" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="So_CCCD" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Gioi_Tinh" Type="Boolean" Nullable="false" />
+    <Property Name="Dia_Chi" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="So_Dien_Thoai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Mat_Khau" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Chuyen_mon" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAI_KHOAN" Relationship="Self.FK_BAC_SI_G_CO_TK2_TAI_KHOA" FromRole="BAC_SI_GIA_DINH" ToRole="TAI_KHOAN" />
+    <NavigationProperty Name="PHAN_CONG_CHAM_SOC" Relationship="Self.FK_PHAN_CON_CHAM_SOC__BAC_SI_G" FromRole="BAC_SI_GIA_DINH" ToRole="PHAN_CONG_CHAM_SOC" />
+    <NavigationProperty Name="SO_THEO_DOI_SUC_KHOE" Relationship="Self.FK_SO_THEO__GHI_SO_TH_BAC_SI_G" FromRole="BAC_SI_GIA_DINH" ToRole="SO_THEO_DOI_SUC_KHOE" />
+  </EntityType>
+  <EntityType Name="BENH">
+    <Key>
+      <PropertyRef Name="Ma_Benh" />
+    </Key>
+    <Property Name="Ma_Benh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten_Benh" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="SO_THEO_DOI_SUC_KHOE" Relationship="Self.CHI_TIET_CHUAN_DOAN_BENH" FromRole="BENH" ToRole="SO_THEO_DOI_SUC_KHOE" />
+  </EntityType>
+  <EntityType Name="BENH_NHAN">
+    <Key>
+      <PropertyRef Name="Ma_TK" />
+    </Key>
+    <Property Name="Ma_TK" Type="Int32" Nullable="false" />
+    <Property Name="Ma_HGD" Type="Int32" Nullable="false" />
+    <Property Name="Ma_Quyen" Type="Int32" Nullable="false" />
+    <Property Name="Ho_Ten" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ngay_Sinh" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="So_CCCD" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Gioi_Tinh" Type="Boolean" Nullable="false" />
+    <Property Name="Dia_Chi" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="So_Dien_Thoai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Mat_Khau" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="So_BHYT" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="TAI_KHOAN" Relationship="Self.FK_BENH_NHA_CO_TK3_TAI_KHOA" FromRole="BENH_NHAN" ToRole="TAI_KHOAN" />
+    <NavigationProperty Name="HO_GIA_DINH" Relationship="Self.FK_BENH_NHA_THUOC_HGD_HO_GIA_D" FromRole="BENH_NHAN" ToRole="HO_GIA_DINH" />
+    <NavigationProperty Name="LICH_CHAM_SOC" Relationship="Self.FK_LICH_CHA_DAT_LICH__BENH_NHA" FromRole="BENH_NHAN" ToRole="LICH_CHAM_SOC" />
+    <NavigationProperty Name="SO_THEO_DOI_SUC_KHOE" Relationship="Self.FK_SO_THEO__CO_SO_THE_BENH_NHA" FromRole="BENH_NHAN" ToRole="SO_THEO_DOI_SUC_KHOE" />
+  </EntityType>
+  <EntityType Name="DICH_VU_CHAM_SOC_NGUOI_BENH">
+    <Key>
+      <PropertyRef Name="Ma_Dich_Vu" />
+    </Key>
+    <Property Name="Ma_Dich_Vu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten_Dich_Vu" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mo_Ta" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Noi_Cham_Soc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gioi_Tinh_Cua_Nhan_Vien_Cham_Soc" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="DON_GIA_DICH_VU" Relationship="Self.FK_DON_GIA__CO_DON_GI_DICH_VU_" FromRole="DICH_VU_CHAM_SOC_NGUOI_BENH" ToRole="DON_GIA_DICH_VU" />
+    <NavigationProperty Name="LICH_CHAM_SOC" Relationship="Self.FK_LICH_CHA_CUA_DICH__DICH_VU_" FromRole="DICH_VU_CHAM_SOC_NGUOI_BENH" ToRole="LICH_CHAM_SOC" />
+  </EntityType>
+  <EntityType Name="DON_GIA_DICH_VU">
+    <Key>
+      <PropertyRef Name="Ma_Dich_Vu" />
+      <PropertyRef Name="Ngay_Gio" />
+    </Key>
+    <Property Name="Ma_Dich_Vu" Type="Int32" Nullable="false" />
+    <Property Name="Ngay_Gio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Don_Gia" Type="Int64" />
+    <NavigationProperty Name="DICH_VU_CHAM_SOC_NGUOI_BENH" Relationship="Self.FK_DON_GIA__CO_DON_GI_DICH_VU_" FromRole="DON_GIA_DICH_VU" ToRole="DICH_VU_CHAM_SOC_NGUOI_BENH" />
+    <NavigationProperty Name="THOI_DIEM" Relationship="Self.FK_DON_GIA__CO_DON_GI_THOI_DIE" FromRole="DON_GIA_DICH_VU" ToRole="THOI_DIEM" />
+  </EntityType>
+  <EntityType Name="HO_GIA_DINH">
+    <Key>
+      <PropertyRef Name="Ma_HGD" />
+    </Key>
+    <Property Name="Ma_HGD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SoDienThoai_HGD" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="BENH_NHAN" Relationship="Self.FK_BENH_NHA_THUOC_HGD_HO_GIA_D" FromRole="HO_GIA_DINH" ToRole="BENH_NHAN" />
+    <NavigationProperty Name="PHAN_CONG_CHAM_SOC" Relationship="Self.FK_PHAN_CON_CO_BAC_SI_HO_GIA_D" FromRole="HO_GIA_DINH" ToRole="PHAN_CONG_CHAM_SOC" />
+  </EntityType>
+  <EntityType Name="HOA_DON">
+    <Key>
+      <PropertyRef Name="So_Hoa_Don" />
+    </Key>
+    <Property Name="So_Hoa_Don" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ngay_Gio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Ma_Lich" Type="Int32" Nullable="false" />
+    <Property Name="Ma_TK" Type="Int32" Nullable="false" />
+    <Property Name="Tong_Tien" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="LICH_CHAM_SOC" Relationship="Self.FK_HOA_DON_CO_HOA_DO_LICH_CHA" FromRole="HOA_DON" ToRole="LICH_CHAM_SOC" />
+    <NavigationProperty Name="THOI_DIEM" Relationship="Self.FK_HOA_DON_LAP_HOA_D_THOI_DIE" FromRole="HOA_DON" ToRole="THOI_DIEM" />
+    <NavigationProperty Name="NHAN_VIEN_CHAM_SOC" Relationship="Self.FK_HOA_DON_NHAN_CHAM_NHAN_VIE" FromRole="HOA_DON" ToRole="NHAN_VIEN_CHAM_SOC" />
+    <NavigationProperty Name="LICH_CHAM_SOC1" Relationship="Self.FK_LICH_CHA_CO_HOA_DO_HOA_DON" FromRole="HOA_DON" ToRole="LICH_CHAM_SOC" />
+  </EntityType>
+  <EntityType Name="LICH_CHAM_SOC">
+    <Key>
+      <PropertyRef Name="Ma_Lich" />
+    </Key>
+    <Property Name="Ma_Lich" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="So_Hoa_Don" Type="Int32" />
+    <Property Name="Ma_Dich_Vu" Type="Int32" Nullable="false" />
+    <Property Name="Ma_TK" Type="Int32" Nullable="false" />
+    <Property Name="Ngay_Bat_Dau" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="So_Ngay_Thue" Type="Int32" Nullable="false" />
+    <Property Name="Yeu_Cau_Chi_Dinh_NVCS" Type="Boolean" Nullable="false" />
+    <Property Name="Ten_NVCS_Muon_Chon" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Mo_Ta_Benh_Ly" Type="String" MaxLength="254" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ho_Ten_Benh_Nhan" Type="String" MaxLength="254" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Dia_Chi_Noi_Cham_Soc" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="So_Dien_Thoai_Nguoi_Thue" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Trang_Thai" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BENH_NHAN" Relationship="Self.FK_LICH_CHA_DAT_LICH__BENH_NHA" FromRole="LICH_CHAM_SOC" ToRole="BENH_NHAN" />
+    <NavigationProperty Name="DICH_VU_CHAM_SOC_NGUOI_BENH" Relationship="Self.FK_LICH_CHA_CUA_DICH__DICH_VU_" FromRole="LICH_CHAM_SOC" ToRole="DICH_VU_CHAM_SOC_NGUOI_BENH" />
+    <NavigationProperty Name="HOA_DON" Relationship="Self.FK_HOA_DON_CO_HOA_DO_LICH_CHA" FromRole="LICH_CHAM_SOC" ToRole="HOA_DON" />
+    <NavigationProperty Name="HOA_DON1" Relationship="Self.FK_LICH_CHA_CO_HOA_DO_HOA_DON" FromRole="LICH_CHAM_SOC" ToRole="HOA_DON" />
+  </EntityType>
+  <EntityType Name="NHAN_VIEN_CHAM_SOC">
+    <Key>
+      <PropertyRef Name="Ma_TK" />
+    </Key>
+    <Property Name="Ma_TK" Type="Int32" Nullable="false" />
+    <Property Name="Ma_Quyen" Type="Int32" Nullable="false" />
+    <Property Name="Ho_Ten" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ngay_Sinh" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="So_CCCD" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Gioi_Tinh" Type="Boolean" Nullable="false" />
+    <Property Name="Dia_Chi" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="So_Dien_Thoai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Mat_Khau" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Trang_Thai_Lam_Viec" Type="Boolean" Nullable="false" />
+    <Property Name="Kinh_nghiem" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="HOA_DON" Relationship="Self.FK_HOA_DON_NHAN_CHAM_NHAN_VIE" FromRole="NHAN_VIEN_CHAM_SOC" ToRole="HOA_DON" />
+    <NavigationProperty Name="TAI_KHOAN" Relationship="Self.FK_NHAN_VIE_CO_TK_TAI_KHOA" FromRole="NHAN_VIEN_CHAM_SOC" ToRole="TAI_KHOAN" />
+  </EntityType>
+  <EntityType Name="PHAN_CONG_CHAM_SOC">
+    <Key>
+      <PropertyRef Name="Ma_HGD" />
+      <PropertyRef Name="Ma_TK" />
+    </Key>
+    <Property Name="Ma_HGD" Type="Int32" Nullable="false" />
+    <Property Name="Ma_TK" Type="Int32" Nullable="false" />
+    <Property Name="Thoi_Gian_Bat_Dau" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Thoi_Gian_Ket_Thuc" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="BAC_SI_GIA_DINH" Relationship="Self.FK_PHAN_CON_CHAM_SOC__BAC_SI_G" FromRole="PHAN_CONG_CHAM_SOC" ToRole="BAC_SI_GIA_DINH" />
+    <NavigationProperty Name="HO_GIA_DINH" Relationship="Self.FK_PHAN_CON_CO_BAC_SI_HO_GIA_D" FromRole="PHAN_CONG_CHAM_SOC" ToRole="HO_GIA_DINH" />
+  </EntityType>
+  <EntityType Name="QUAN_TRI_VIEN">
+    <Key>
+      <PropertyRef Name="Ma_TK" />
+    </Key>
+    <Property Name="Ma_TK" Type="Int32" Nullable="false" />
+    <Property Name="Ma_Quyen" Type="Int32" Nullable="false" />
+    <Property Name="Ho_Ten" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ngay_Sinh" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="So_CCCD" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Gioi_Tinh" Type="Boolean" Nullable="false" />
+    <Property Name="Dia_Chi" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="So_Dien_Thoai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Mat_Khau" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAI_KHOAN" Relationship="Self.FK_QUAN_TRI_CO_TK4_TAI_KHOA" FromRole="QUAN_TRI_VIEN" ToRole="TAI_KHOAN" />
+  </EntityType>
+  <EntityType Name="QUYEN_TRUY_CAP">
+    <Key>
+      <PropertyRef Name="Ma_Quyen" />
+    </Key>
+    <Property Name="Ma_Quyen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten_Quyen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAI_KHOAN" Relationship="Self.FK_TAI_KHOA_TK_CO_QTC_QUYEN_TR" FromRole="QUYEN_TRUY_CAP" ToRole="TAI_KHOAN" />
+  </EntityType>
+  <EntityType Name="SO_THEO_DOI_SUC_KHOE">
+    <Key>
+      <PropertyRef Name="Ma_TK" />
+      <PropertyRef Name="BAC_Ma_TK" />
+      <PropertyRef Name="Ngay_Gio" />
+      <PropertyRef Name="So_Thu_Tu" />
+    </Key>
+    <Property Name="Ma_TK" Type="Int32" Nullable="false" />
+    <Property Name="BAC_Ma_TK" Type="Int32" Nullable="false" />
+    <Property Name="Ngay_Gio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="So_Thu_Tu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cac_Thong_So_Suc_Khoe" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Don_Thuoc" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Lieu_Dung" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="So_Luong_Thuoc" Type="Int32" Nullable="false" />
+    <Property Name="Chi_Dinh_Dinh_Duong" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ghi_Chu" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="BAC_SI_GIA_DINH" Relationship="Self.FK_SO_THEO__GHI_SO_TH_BAC_SI_G" FromRole="SO_THEO_DOI_SUC_KHOE" ToRole="BAC_SI_GIA_DINH" />
+    <NavigationProperty Name="BENH_NHAN" Relationship="Self.FK_SO_THEO__CO_SO_THE_BENH_NHA" FromRole="SO_THEO_DOI_SUC_KHOE" ToRole="BENH_NHAN" />
+    <NavigationProperty Name="THOI_DIEM" Relationship="Self.FK_SO_THEO__LAP_SO_TH_THOI_DIE" FromRole="SO_THEO_DOI_SUC_KHOE" ToRole="THOI_DIEM" />
+    <NavigationProperty Name="BENH" Relationship="Self.CHI_TIET_CHUAN_DOAN_BENH" FromRole="SO_THEO_DOI_SUC_KHOE" ToRole="BENH" />
+  </EntityType>
+  <EntityType Name="TAI_KHOAN">
+    <Key>
+      <PropertyRef Name="Ma_TK" />
+    </Key>
+    <Property Name="Ma_TK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ma_Quyen" Type="Int32" Nullable="false" />
+    <Property Name="Ho_Ten" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ngay_Sinh" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="So_CCCD" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Gioi_Tinh" Type="Boolean" Nullable="false" />
+    <Property Name="Dia_Chi" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="So_Dien_Thoai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Mat_Khau" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="BAC_SI_GIA_DINH" Relationship="Self.FK_BAC_SI_G_CO_TK2_TAI_KHOA" FromRole="TAI_KHOAN" ToRole="BAC_SI_GIA_DINH" />
+    <NavigationProperty Name="BENH_NHAN" Relationship="Self.FK_BENH_NHA_CO_TK3_TAI_KHOA" FromRole="TAI_KHOAN" ToRole="BENH_NHAN" />
+    <NavigationProperty Name="NHAN_VIEN_CHAM_SOC" Relationship="Self.FK_NHAN_VIE_CO_TK_TAI_KHOA" FromRole="TAI_KHOAN" ToRole="NHAN_VIEN_CHAM_SOC" />
+    <NavigationProperty Name="QUAN_TRI_VIEN" Relationship="Self.FK_QUAN_TRI_CO_TK4_TAI_KHOA" FromRole="TAI_KHOAN" ToRole="QUAN_TRI_VIEN" />
+    <NavigationProperty Name="QUYEN_TRUY_CAP" Relationship="Self.FK_TAI_KHOA_TK_CO_QTC_QUYEN_TR" FromRole="TAI_KHOAN" ToRole="QUYEN_TRUY_CAP" />
+  </EntityType>
+  <EntityType Name="THOI_DIEM">
+    <Key>
+      <PropertyRef Name="Ngay_Gio" />
+    </Key>
+    <Property Name="Ngay_Gio" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="DON_GIA_DICH_VU" Relationship="Self.FK_DON_GIA__CO_DON_GI_THOI_DIE" FromRole="THOI_DIEM" ToRole="DON_GIA_DICH_VU" />
+    <NavigationProperty Name="HOA_DON" Relationship="Self.FK_HOA_DON_LAP_HOA_D_THOI_DIE" FromRole="THOI_DIEM" ToRole="HOA_DON" />
+    <NavigationProperty Name="SO_THEO_DOI_SUC_KHOE" Relationship="Self.FK_SO_THEO__LAP_SO_TH_THOI_DIE" FromRole="THOI_DIEM" ToRole="SO_THEO_DOI_SUC_KHOE" />
+  </EntityType>
+  <Association Name="FK_BAC_SI_G_CO_TK2_TAI_KHOA">
+    <End Role="TAI_KHOAN" Type="Self.TAI_KHOAN" Multiplicity="1" />
+    <End Role="BAC_SI_GIA_DINH" Type="Self.BAC_SI_GIA_DINH" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TAI_KHOAN">
+        <PropertyRef Name="Ma_TK" />
+      </Principal>
+      <Dependent Role="BAC_SI_GIA_DINH">
+        <PropertyRef Name="Ma_TK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PHAN_CON_CHAM_SOC__BAC_SI_G">
+    <End Role="BAC_SI_GIA_DINH" Type="Self.BAC_SI_GIA_DINH" Multiplicity="1" />
+    <End Role="PHAN_CONG_CHAM_SOC" Type="Self.PHAN_CONG_CHAM_SOC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BAC_SI_GIA_DINH">
+        <PropertyRef Name="Ma_TK" />
+      </Principal>
+      <Dependent Role="PHAN_CONG_CHAM_SOC">
+        <PropertyRef Name="Ma_TK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SO_THEO__GHI_SO_TH_BAC_SI_G">
+    <End Role="BAC_SI_GIA_DINH" Type="Self.BAC_SI_GIA_DINH" Multiplicity="1" />
+    <End Role="SO_THEO_DOI_SUC_KHOE" Type="Self.SO_THEO_DOI_SUC_KHOE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BAC_SI_GIA_DINH">
+        <PropertyRef Name="Ma_TK" />
+      </Principal>
+      <Dependent Role="SO_THEO_DOI_SUC_KHOE">
+        <PropertyRef Name="BAC_Ma_TK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BENH_NHA_CO_TK3_TAI_KHOA">
+    <End Role="TAI_KHOAN" Type="Self.TAI_KHOAN" Multiplicity="1" />
+    <End Role="BENH_NHAN" Type="Self.BENH_NHAN" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TAI_KHOAN">
+        <PropertyRef Name="Ma_TK" />
+      </Principal>
+      <Dependent Role="BENH_NHAN">
+        <PropertyRef Name="Ma_TK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BENH_NHA_THUOC_HGD_HO_GIA_D">
+    <End Role="HO_GIA_DINH" Type="Self.HO_GIA_DINH" Multiplicity="1" />
+    <End Role="BENH_NHAN" Type="Self.BENH_NHAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HO_GIA_DINH">
+        <PropertyRef Name="Ma_HGD" />
+      </Principal>
+      <Dependent Role="BENH_NHAN">
+        <PropertyRef Name="Ma_HGD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LICH_CHA_DAT_LICH__BENH_NHA">
+    <End Role="BENH_NHAN" Type="Self.BENH_NHAN" Multiplicity="1" />
+    <End Role="LICH_CHAM_SOC" Type="Self.LICH_CHAM_SOC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BENH_NHAN">
+        <PropertyRef Name="Ma_TK" />
+      </Principal>
+      <Dependent Role="LICH_CHAM_SOC">
+        <PropertyRef Name="Ma_TK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SO_THEO__CO_SO_THE_BENH_NHA">
+    <End Role="BENH_NHAN" Type="Self.BENH_NHAN" Multiplicity="1" />
+    <End Role="SO_THEO_DOI_SUC_KHOE" Type="Self.SO_THEO_DOI_SUC_KHOE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BENH_NHAN">
+        <PropertyRef Name="Ma_TK" />
+      </Principal>
+      <Dependent Role="SO_THEO_DOI_SUC_KHOE">
+        <PropertyRef Name="Ma_TK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DON_GIA__CO_DON_GI_DICH_VU_">
+    <End Role="DICH_VU_CHAM_SOC_NGUOI_BENH" Type="Self.DICH_VU_CHAM_SOC_NGUOI_BENH" Multiplicity="1" />
+    <End Role="DON_GIA_DICH_VU" Type="Self.DON_GIA_DICH_VU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DICH_VU_CHAM_SOC_NGUOI_BENH">
+        <PropertyRef Name="Ma_Dich_Vu" />
+      </Principal>
+      <Dependent Role="DON_GIA_DICH_VU">
+        <PropertyRef Name="Ma_Dich_Vu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LICH_CHA_CUA_DICH__DICH_VU_">
+    <End Role="DICH_VU_CHAM_SOC_NGUOI_BENH" Type="Self.DICH_VU_CHAM_SOC_NGUOI_BENH" Multiplicity="1" />
+    <End Role="LICH_CHAM_SOC" Type="Self.LICH_CHAM_SOC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DICH_VU_CHAM_SOC_NGUOI_BENH">
+        <PropertyRef Name="Ma_Dich_Vu" />
+      </Principal>
+      <Dependent Role="LICH_CHAM_SOC">
+        <PropertyRef Name="Ma_Dich_Vu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DON_GIA__CO_DON_GI_THOI_DIE">
+    <End Role="THOI_DIEM" Type="Self.THOI_DIEM" Multiplicity="1" />
+    <End Role="DON_GIA_DICH_VU" Type="Self.DON_GIA_DICH_VU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THOI_DIEM">
+        <PropertyRef Name="Ngay_Gio" />
+      </Principal>
+      <Dependent Role="DON_GIA_DICH_VU">
+        <PropertyRef Name="Ngay_Gio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PHAN_CON_CO_BAC_SI_HO_GIA_D">
+    <End Role="HO_GIA_DINH" Type="Self.HO_GIA_DINH" Multiplicity="1" />
+    <End Role="PHAN_CONG_CHAM_SOC" Type="Self.PHAN_CONG_CHAM_SOC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HO_GIA_DINH">
+        <PropertyRef Name="Ma_HGD" />
+      </Principal>
+      <Dependent Role="PHAN_CONG_CHAM_SOC">
+        <PropertyRef Name="Ma_HGD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HOA_DON_CO_HOA_DO_LICH_CHA">
+    <End Role="LICH_CHAM_SOC" Type="Self.LICH_CHAM_SOC" Multiplicity="1" />
+    <End Role="HOA_DON" Type="Self.HOA_DON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LICH_CHAM_SOC">
+        <PropertyRef Name="Ma_Lich" />
+      </Principal>
+      <Dependent Role="HOA_DON">
+        <PropertyRef Name="Ma_Lich" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HOA_DON_LAP_HOA_D_THOI_DIE">
+    <End Role="THOI_DIEM" Type="Self.THOI_DIEM" Multiplicity="1" />
+    <End Role="HOA_DON" Type="Self.HOA_DON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THOI_DIEM">
+        <PropertyRef Name="Ngay_Gio" />
+      </Principal>
+      <Dependent Role="HOA_DON">
+        <PropertyRef Name="Ngay_Gio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HOA_DON_NHAN_CHAM_NHAN_VIE">
+    <End Role="NHAN_VIEN_CHAM_SOC" Type="Self.NHAN_VIEN_CHAM_SOC" Multiplicity="1" />
+    <End Role="HOA_DON" Type="Self.HOA_DON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHAN_VIEN_CHAM_SOC">
+        <PropertyRef Name="Ma_TK" />
+      </Principal>
+      <Dependent Role="HOA_DON">
+        <PropertyRef Name="Ma_TK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LICH_CHA_CO_HOA_DO_HOA_DON">
+    <End Role="HOA_DON" Type="Self.HOA_DON" Multiplicity="0..1" />
+    <End Role="LICH_CHAM_SOC" Type="Self.LICH_CHAM_SOC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOA_DON">
+        <PropertyRef Name="So_Hoa_Don" />
+      </Principal>
+      <Dependent Role="LICH_CHAM_SOC">
+        <PropertyRef Name="So_Hoa_Don" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NHAN_VIE_CO_TK_TAI_KHOA">
+    <End Role="TAI_KHOAN" Type="Self.TAI_KHOAN" Multiplicity="1" />
+    <End Role="NHAN_VIEN_CHAM_SOC" Type="Self.NHAN_VIEN_CHAM_SOC" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TAI_KHOAN">
+        <PropertyRef Name="Ma_TK" />
+      </Principal>
+      <Dependent Role="NHAN_VIEN_CHAM_SOC">
+        <PropertyRef Name="Ma_TK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QUAN_TRI_CO_TK4_TAI_KHOA">
+    <End Role="TAI_KHOAN" Type="Self.TAI_KHOAN" Multiplicity="1" />
+    <End Role="QUAN_TRI_VIEN" Type="Self.QUAN_TRI_VIEN" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TAI_KHOAN">
+        <PropertyRef Name="Ma_TK" />
+      </Principal>
+      <Dependent Role="QUAN_TRI_VIEN">
+        <PropertyRef Name="Ma_TK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TAI_KHOA_TK_CO_QTC_QUYEN_TR">
+    <End Role="QUYEN_TRUY_CAP" Type="Self.QUYEN_TRUY_CAP" Multiplicity="1" />
+    <End Role="TAI_KHOAN" Type="Self.TAI_KHOAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QUYEN_TRUY_CAP">
+        <PropertyRef Name="Ma_Quyen" />
+      </Principal>
+      <Dependent Role="TAI_KHOAN">
+        <PropertyRef Name="Ma_Quyen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SO_THEO__LAP_SO_TH_THOI_DIE">
+    <End Role="THOI_DIEM" Type="Self.THOI_DIEM" Multiplicity="1" />
+    <End Role="SO_THEO_DOI_SUC_KHOE" Type="Self.SO_THEO_DOI_SUC_KHOE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THOI_DIEM">
+        <PropertyRef Name="Ngay_Gio" />
+      </Principal>
+      <Dependent Role="SO_THEO_DOI_SUC_KHOE">
+        <PropertyRef Name="Ngay_Gio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CHI_TIET_CHUAN_DOAN_BENH">
+    <End Role="SO_THEO_DOI_SUC_KHOE" Type="Self.SO_THEO_DOI_SUC_KHOE" Multiplicity="*" />
+    <End Role="BENH" Type="Self.BENH" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="csdl_HTQLEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BAC_SI_GIA_DINH" EntityType="Self.BAC_SI_GIA_DINH" />
+    <EntitySet Name="BENH" EntityType="Self.BENH" />
+    <EntitySet Name="BENH_NHAN" EntityType="Self.BENH_NHAN" />
+    <EntitySet Name="DICH_VU_CHAM_SOC_NGUOI_BENH" EntityType="Self.DICH_VU_CHAM_SOC_NGUOI_BENH" />
+    <EntitySet Name="DON_GIA_DICH_VU" EntityType="Self.DON_GIA_DICH_VU" />
+    <EntitySet Name="HO_GIA_DINH" EntityType="Self.HO_GIA_DINH" />
+    <EntitySet Name="HOA_DON" EntityType="Self.HOA_DON" />
+    <EntitySet Name="LICH_CHAM_SOC" EntityType="Self.LICH_CHAM_SOC" />
+    <EntitySet Name="NHAN_VIEN_CHAM_SOC" EntityType="Self.NHAN_VIEN_CHAM_SOC" />
+    <EntitySet Name="PHAN_CONG_CHAM_SOC" EntityType="Self.PHAN_CONG_CHAM_SOC" />
+    <EntitySet Name="QUAN_TRI_VIEN" EntityType="Self.QUAN_TRI_VIEN" />
+    <EntitySet Name="QUYEN_TRUY_CAP" EntityType="Self.QUYEN_TRUY_CAP" />
+    <EntitySet Name="SO_THEO_DOI_SUC_KHOE" EntityType="Self.SO_THEO_DOI_SUC_KHOE" />
+    <EntitySet Name="TAI_KHOAN" EntityType="Self.TAI_KHOAN" />
+    <EntitySet Name="THOI_DIEM" EntityType="Self.THOI_DIEM" />
+    <AssociationSet Name="FK_BAC_SI_G_CO_TK2_TAI_KHOA" Association="Self.FK_BAC_SI_G_CO_TK2_TAI_KHOA">
+      <End Role="TAI_KHOAN" EntitySet="TAI_KHOAN" />
+      <End Role="BAC_SI_GIA_DINH" EntitySet="BAC_SI_GIA_DINH" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PHAN_CON_CHAM_SOC__BAC_SI_G" Association="Self.FK_PHAN_CON_CHAM_SOC__BAC_SI_G">
+      <End Role="BAC_SI_GIA_DINH" EntitySet="BAC_SI_GIA_DINH" />
+      <End Role="PHAN_CONG_CHAM_SOC" EntitySet="PHAN_CONG_CHAM_SOC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SO_THEO__GHI_SO_TH_BAC_SI_G" Association="Self.FK_SO_THEO__GHI_SO_TH_BAC_SI_G">
+      <End Role="BAC_SI_GIA_DINH" EntitySet="BAC_SI_GIA_DINH" />
+      <End Role="SO_THEO_DOI_SUC_KHOE" EntitySet="SO_THEO_DOI_SUC_KHOE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BENH_NHA_CO_TK3_TAI_KHOA" Association="Self.FK_BENH_NHA_CO_TK3_TAI_KHOA">
+      <End Role="TAI_KHOAN" EntitySet="TAI_KHOAN" />
+      <End Role="BENH_NHAN" EntitySet="BENH_NHAN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BENH_NHA_THUOC_HGD_HO_GIA_D" Association="Self.FK_BENH_NHA_THUOC_HGD_HO_GIA_D">
+      <End Role="HO_GIA_DINH" EntitySet="HO_GIA_DINH" />
+      <End Role="BENH_NHAN" EntitySet="BENH_NHAN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LICH_CHA_DAT_LICH__BENH_NHA" Association="Self.FK_LICH_CHA_DAT_LICH__BENH_NHA">
+      <End Role="BENH_NHAN" EntitySet="BENH_NHAN" />
+      <End Role="LICH_CHAM_SOC" EntitySet="LICH_CHAM_SOC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SO_THEO__CO_SO_THE_BENH_NHA" Association="Self.FK_SO_THEO__CO_SO_THE_BENH_NHA">
+      <End Role="BENH_NHAN" EntitySet="BENH_NHAN" />
+      <End Role="SO_THEO_DOI_SUC_KHOE" EntitySet="SO_THEO_DOI_SUC_KHOE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DON_GIA__CO_DON_GI_DICH_VU_" Association="Self.FK_DON_GIA__CO_DON_GI_DICH_VU_">
+      <End Role="DICH_VU_CHAM_SOC_NGUOI_BENH" EntitySet="DICH_VU_CHAM_SOC_NGUOI_BENH" />
+      <End Role="DON_GIA_DICH_VU" EntitySet="DON_GIA_DICH_VU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LICH_CHA_CUA_DICH__DICH_VU_" Association="Self.FK_LICH_CHA_CUA_DICH__DICH_VU_">
+      <End Role="DICH_VU_CHAM_SOC_NGUOI_BENH" EntitySet="DICH_VU_CHAM_SOC_NGUOI_BENH" />
+      <End Role="LICH_CHAM_SOC" EntitySet="LICH_CHAM_SOC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DON_GIA__CO_DON_GI_THOI_DIE" Association="Self.FK_DON_GIA__CO_DON_GI_THOI_DIE">
+      <End Role="THOI_DIEM" EntitySet="THOI_DIEM" />
+      <End Role="DON_GIA_DICH_VU" EntitySet="DON_GIA_DICH_VU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PHAN_CON_CO_BAC_SI_HO_GIA_D" Association="Self.FK_PHAN_CON_CO_BAC_SI_HO_GIA_D">
+      <End Role="HO_GIA_DINH" EntitySet="HO_GIA_DINH" />
+      <End Role="PHAN_CONG_CHAM_SOC" EntitySet="PHAN_CONG_CHAM_SOC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HOA_DON_CO_HOA_DO_LICH_CHA" Association="Self.FK_HOA_DON_CO_HOA_DO_LICH_CHA">
+      <End Role="LICH_CHAM_SOC" EntitySet="LICH_CHAM_SOC" />
+      <End Role="HOA_DON" EntitySet="HOA_DON" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HOA_DON_LAP_HOA_D_THOI_DIE" Association="Self.FK_HOA_DON_LAP_HOA_D_THOI_DIE">
+      <End Role="THOI_DIEM" EntitySet="THOI_DIEM" />
+      <End Role="HOA_DON" EntitySet="HOA_DON" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HOA_DON_NHAN_CHAM_NHAN_VIE" Association="Self.FK_HOA_DON_NHAN_CHAM_NHAN_VIE">
+      <End Role="NHAN_VIEN_CHAM_SOC" EntitySet="NHAN_VIEN_CHAM_SOC" />
+      <End Role="HOA_DON" EntitySet="HOA_DON" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LICH_CHA_CO_HOA_DO_HOA_DON" Association="Self.FK_LICH_CHA_CO_HOA_DO_HOA_DON">
+      <End Role="HOA_DON" EntitySet="HOA_DON" />
+      <End Role="LICH_CHAM_SOC" EntitySet="LICH_CHAM_SOC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NHAN_VIE_CO_TK_TAI_KHOA" Association="Self.FK_NHAN_VIE_CO_TK_TAI_KHOA">
+      <End Role="TAI_KHOAN" EntitySet="TAI_KHOAN" />
+      <End Role="NHAN_VIEN_CHAM_SOC" EntitySet="NHAN_VIEN_CHAM_SOC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QUAN_TRI_CO_TK4_TAI_KHOA" Association="Self.FK_QUAN_TRI_CO_TK4_TAI_KHOA">
+      <End Role="TAI_KHOAN" EntitySet="TAI_KHOAN" />
+      <End Role="QUAN_TRI_VIEN" EntitySet="QUAN_TRI_VIEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TAI_KHOA_TK_CO_QTC_QUYEN_TR" Association="Self.FK_TAI_KHOA_TK_CO_QTC_QUYEN_TR">
+      <End Role="QUYEN_TRUY_CAP" EntitySet="QUYEN_TRUY_CAP" />
+      <End Role="TAI_KHOAN" EntitySet="TAI_KHOAN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SO_THEO__LAP_SO_TH_THOI_DIE" Association="Self.FK_SO_THEO__LAP_SO_TH_THOI_DIE">
+      <End Role="THOI_DIEM" EntitySet="THOI_DIEM" />
+      <End Role="SO_THEO_DOI_SUC_KHOE" EntitySet="SO_THEO_DOI_SUC_KHOE" />
+    </AssociationSet>
+    <AssociationSet Name="CHI_TIET_CHUAN_DOAN_BENH" Association="Self.CHI_TIET_CHUAN_DOAN_BENH">
+      <End Role="SO_THEO_DOI_SUC_KHOE" EntitySet="SO_THEO_DOI_SUC_KHOE" />
+      <End Role="BENH" EntitySet="BENH" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

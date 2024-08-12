@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3a78b3007f734eb3b063aec9fda9f044" Name="Diagram1">
+        <EntityTypeShape EntityType="HTQL_DVYTGDModel.BAC_SI_GIA_DINH" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HTQL_DVYTGDModel.BENH" Width="1.5" PointX="12.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HTQL_DVYTGDModel.BENH_NHAN" Width="1.5" PointX="8.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HTQL_DVYTGDModel.DICH_VU_CHAM_SOC_NGUOI_BENH" Width="1.5" PointX="8.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HTQL_DVYTGDModel.DON_GIA_DICH_VU" Width="1.5" PointX="13.5" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="HTQL_DVYTGDModel.HO_GIA_DINH" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HTQL_DVYTGDModel.HOA_DON" Width="1.5" PointX="12.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HTQL_DVYTGDModel.LICH_CHAM_SOC" Width="1.5" PointX="10.5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HTQL_DVYTGDModel.NHAN_VIEN_CHAM_SOC" Width="1.5" PointX="5.25" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HTQL_DVYTGDModel.PHAN_CONG_CHAM_SOC" Width="1.5" PointX="7.5" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HTQL_DVYTGDModel.QUAN_TRI_VIEN" Width="1.5" PointX="5.25" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HTQL_DVYTGDModel.QUYEN_TRUY_CAP" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HTQL_DVYTGDModel.SO_THEO_DOI_SUC_KHOE" Width="1.5" PointX="10.5" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HTQL_DVYTGDModel.TAI_KHOAN" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HTQL_DVYTGDModel.THOI_DIEM" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="HTQL_DVYTGDModel.FK_BAC_SI_G_CO_TK2_TAI_KHOA" ManuallyRouted="false" />
+        <AssociationConnector Association="HTQL_DVYTGDModel.FK_PHAN_CON_CHAM_SOC__BAC_SI_G" ManuallyRouted="false" />
+        <AssociationConnector Association="HTQL_DVYTGDModel.FK_SO_THEO__GHI_SO_TH_BAC_SI_G" ManuallyRouted="false" />
+        <AssociationConnector Association="HTQL_DVYTGDModel.FK_BENH_NHA_CO_TK3_TAI_KHOA" ManuallyRouted="false" />
+        <AssociationConnector Association="HTQL_DVYTGDModel.FK_BENH_NHA_THUOC_HGD_HO_GIA_D" ManuallyRouted="false" />
+        <AssociationConnector Association="HTQL_DVYTGDModel.FK_LICH_CHA_DAT_LICH__BENH_NHA" ManuallyRouted="false" />
+        <AssociationConnector Association="HTQL_DVYTGDModel.FK_SO_THEO__CO_SO_THE_BENH_NHA" ManuallyRouted="false" />
+        <AssociationConnector Association="HTQL_DVYTGDModel.FK_DON_GIA__CO_DON_GI_DICH_VU_" ManuallyRouted="false" />
+        <AssociationConnector Association="HTQL_DVYTGDModel.FK_LICH_CHA_CUA_DICH__DICH_VU_" ManuallyRouted="false" />
+        <AssociationConnector Association="HTQL_DVYTGDModel.FK_DON_GIA__CO_DON_GI_THOI_DIE" ManuallyRouted="false" />
+        <AssociationConnector Association="HTQL_DVYTGDModel.FK_PHAN_CON_CO_BAC_SI_HO_GIA_D" ManuallyRouted="false" />
+        <AssociationConnector Association="HTQL_DVYTGDModel.FK_HOA_DON_CO_HOA_DO_LICH_CHA" ManuallyRouted="false" />
+        <AssociationConnector Association="HTQL_DVYTGDModel.FK_HOA_DON_LAP_HOA_D_THOI_DIE" ManuallyRouted="false" />
+        <AssociationConnector Association="HTQL_DVYTGDModel.FK_HOA_DON_NHAN_CHAM_NHAN_VIE" ManuallyRouted="false" />
+        <AssociationConnector Association="HTQL_DVYTGDModel.FK_LICH_CHA_CO_HOA_DO_HOA_DON" ManuallyRouted="false" />
+        <AssociationConnector Association="HTQL_DVYTGDModel.FK_NHAN_VIE_CO_TK_TAI_KHOA" ManuallyRouted="false" />
+        <AssociationConnector Association="HTQL_DVYTGDModel.FK_QUAN_TRI_CO_TK4_TAI_KHOA" ManuallyRouted="false" />
+        <AssociationConnector Association="HTQL_DVYTGDModel.FK_TAI_KHOA_TK_CO_QTC_QUYEN_TR" ManuallyRouted="false" />
+        <AssociationConnector Association="HTQL_DVYTGDModel.FK_SO_THEO__LAP_SO_TH_THOI_DIE" ManuallyRouted="false" />
+        <AssociationConnector Association="HTQL_DVYTGDModel.CHI_TIET_CHUAN_DOAN_BENH" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

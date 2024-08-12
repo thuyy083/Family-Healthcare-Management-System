@@ -1,0 +1,83 @@
+﻿@model HTQL_DV_Y_TE_GIA_DINH.SO_THEO_DOI_SUC_KHOE
+
+
+@{
+    ViewBag.Title = "Them_So_Theo_Doi_SK";
+    Layout = "~/Areas/BacSi/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    input {
+        max-width: 100%;
+    }
+
+    textarea {
+        max-width: 100%;
+    }
+
+    .nut {
+        background-color: #00b39d;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+        .nut:hover {
+            background-color: #00a48f;
+        }
+</style>
+
+<div class="container my-2 p-2">
+    <h3>THÊM SỔ THEO DÕI SỨC KHỎE</h3>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row col-md-6 g-2 mx-auto shadow p-4">
+            <hr />
+            <div class="form_container">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="col-12">
+                    <label class="form-label">Mã bệnh nhân</label>
+                    <div>
+                        <input class="form-control" id="Ma_TK" name="Ma_TK" type="text" value="@ViewBag.Ma_TK" readonly />
+
+                        @Html.ValidationMessageFor(model => model.Ma_TK, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Các thông số sức khỏe:</label>
+                    @Html.TextAreaFor(model => model.Cac_Thong_So_Suc_Khoe, new { @class = "form-control", rows = 3 })
+                    @Html.ValidationMessageFor(model => model.Cac_Thong_So_Suc_Khoe, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label">Đơn thuốc:</label>
+                    @Html.TextAreaFor(model => model.Don_Thuoc, new { @class = "form-control", rows = 3 })
+                    @Html.ValidationMessageFor(model => model.Don_Thuoc, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label">Chỉ định dinh dưỡng:</label>
+                    @Html.TextAreaFor(model => model.Chi_Dinh_Dinh_Duong, new { @class = "form-control", rows = 3 })
+                    @Html.ValidationMessageFor(model => model.Chi_Dinh_Dinh_Duong, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Ghi chú:</label>
+                    @Html.TextAreaFor(model => model.Ghi_Chu, new { @class = "form-control", rows = 3 })
+                    @Html.ValidationMessageFor(model => model.Ghi_Chu, "", new { @class = "text-danger" })
+                </div>
+                <div class="mb-3 d-flex">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Thêm" class="btn nut" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

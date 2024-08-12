@@ -1,0 +1,125 @@
+﻿@model HTQL_DV_Y_TE_GIA_DINH.LICH_CHAM_SOC
+
+@{
+    ViewBag.Title = "DetailsBS";
+    Layout = "~/Areas/NhanVien/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .icon1 {
+        padding: 7px 12px;
+        color: #646464;
+        background-color: #f0f1f3;
+        font-size: 18px;
+        border-radius: 4px;
+    }
+
+        .icon1:hover {
+            background-color: #00c6a9;
+            color: #fff;
+        }
+
+    h2 {
+        text-align: left;
+    }
+
+    h5 {
+        text-align: left;
+    }
+
+    .my-3 {
+        text-decoration: none;
+        color: #008a6e;
+        font-weight: bold;
+    }
+</style>
+
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row">
+        <div class="col-8">
+
+            <div class="mt-2">
+                <h5><b>LỊCH CHĂM SÓC</b></h5>
+            </div>
+            <div class="mt-2"><b>Dịch vụ:</b> @Html.DisplayFor(model => model.DICH_VU_CHAM_SOC_NGUOI_BENH.Ten_Dich_Vu)</div>
+            @if (Model.Ma_TK != null)
+            {
+                <div class="mt-2"><b>Người đặt lịch:</b> @Html.DisplayFor(model => model.BENH_NHAN.Ho_Ten)</div>
+
+            }
+            <div class="mt-2"><b>Ngày bắt đầu:</b> @(Model.Ngay_Bat_Dau)</div>
+            <div class="mt-2"><b>Số ngày thuê:</b> @Html.DisplayFor(model => model.So_Ngay_Thue)</div>
+            <div class="mt-2"><b>Yêu cầu chỉ định nhân viên chăm sóc:</b> @(Model.Yeu_Cau_Chi_Dinh_NVCS ? "Có" : "Không")</div>
+            @if (Model.Yeu_Cau_Chi_Dinh_NVCS)
+            {
+                <div class="mt-2"><b>Nhân viên chăm sóc được chỉ định: </b>@Html.DisplayFor(model => model.Ten_NVCS_Muon_Chon)</div>
+
+            }
+            <div class="mt-2"><b>Mô tả bệnh lý:</b>  @Html.DisplayFor(model => model.Mo_Ta_Benh_Ly)</div>
+            <div class="mt-2">
+                <b>Họ tên bệnh nhân:</b> @Html.DisplayFor(model => model.Ho_Ten_Benh_Nhan)
+            </div>
+            <div class="mt-2">
+                <b>Địa chỉ nơi chăm sóc:</b> @Model.Dia_Chi_Noi_Cham_Soc
+            </div>
+
+            <div class="mt-2">
+                <b>Số điện thoại người thuê:</b> @Html.DisplayFor(model => model.So_Dien_Thoai_Nguoi_Thue)
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container-fluid">
+    <a href="@Url.Action("getListLich_LV", "QL_LichLV")" class="my-3">Quay về</a>
+
+    @if (Model.HOA_DON.Count > 0)
+    {
+        <h2>PHÂN CÔNG CHĂM SÓC</h2>
+        <table class="table table-bordered" style="border: 1px solid; border-color: #00c6a9;">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        Số hóa đơn
+                    </th>
+                    <th scope="col">
+                        Thời điểm lập hóa đơn
+                    </th>
+                    <th scope="col">
+                        Nhân viên chăm sóc được phân công
+                    </th>
+                    <th scope="col">
+                        Tổng tiền
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model.HOA_DON)
+                {
+                    <tr>
+                        <td>
+                            @item.So_Hoa_Don
+                        </td>
+                        <td>
+                            @item.Ngay_Gio
+                        </td>
+                        <td>
+                            @item.NHAN_VIEN_CHAM_SOC.Ho_Ten
+                        </td>
+                        <td>
+                            @item.Tong_Tien
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    }
+
+
+</div>

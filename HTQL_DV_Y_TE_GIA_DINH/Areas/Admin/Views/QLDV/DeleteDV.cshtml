@@ -1,0 +1,65 @@
+﻿@model HTQL_DV_Y_TE_GIA_DINH.DICH_VU_CHAM_SOC_NGUOI_BENH
+
+@{
+    ViewBag.Title = "DeleteDV";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DeleteDV</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>DICH_VU_CHAM_SOC_NGUOI_BENH</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ma_Dich_Vu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ma_Dich_Vu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ten_Dich_Vu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten_Dich_Vu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mo_Ta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mo_Ta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Noi_Cham_Soc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Noi_Cham_Soc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gioi_Tinh_Cua_Nhan_Vien_Cham_Soc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gioi_Tinh_Cua_Nhan_Vien_Cham_Soc)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

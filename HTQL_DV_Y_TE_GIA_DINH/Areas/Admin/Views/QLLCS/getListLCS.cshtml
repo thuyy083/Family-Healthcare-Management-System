@@ -1,0 +1,148 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<HTQL_DV_Y_TE_GIA_DINH.LICH_CHAM_SOC>
+
+@{
+    ViewBag.Title = "getListLCS";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .details {
+        text-decoration: none;
+        color: #008a6e;
+        font-weight: bold;
+    }
+
+    .table-striped-custom tbody tr:nth-child(odd) td {
+        background-color: #C6F2E7;
+    }
+
+    .table-striped-custom tbody tr:nth-child(even) td {
+        background-color: #C6F2E7;
+    }
+
+    .nut {
+        background-color: #00b39d;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+        .nut:hover {
+            background-color: #00a48f;
+        }
+</style>
+
+<div class="container">
+    <h2>Quản lý lịch chăm sóc người bệnh</h2>
+
+    <table class="table table-light table-striped table-striped-custom">
+        <thead>
+            <tr>
+                <th>
+                    STT
+                </th>
+                <th>
+                    Người đặt lịch
+                </th>
+                <th>
+                    Tên dịch vụ
+                </th>
+                <th>
+                    Ngày bắt đầu
+                </th>
+                <th>
+                    Số ngày thuê
+                </th>
+                <th>
+                    Chỉnh định nhân viên
+                </th>
+                <th>
+                    Nhân viên
+                </th>
+                <th>
+                    Mô tả bệnh lý
+                </th>
+                <th>
+                    Họ tên bệnh nhân
+                </th>
+                <th>
+                    Địa chỉ
+                </th>
+                <th>
+                    Số điện thoại
+                </th>
+                <th>
+                    Trạng thái
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{ int a = 1;}
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @a
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BENH_NHAN.Ho_Ten)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DICH_VU_CHAM_SOC_NGUOI_BENH.Ten_Dich_Vu)
+                    </td>
+
+                    <td>
+                        @item.Ngay_Bat_Dau.ToString("dd/MM/yyyy")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.So_Ngay_Thue)
+                    </td>
+                    <td>
+                        @(item.Yeu_Cau_Chi_Dinh_NVCS ? "Có" : "Không")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ten_NVCS_Muon_Chon)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mo_Ta_Benh_Ly)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ho_Ten_Benh_Nhan)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Dia_Chi_Noi_Cham_Soc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.So_Dien_Thoai_Nguoi_Thue)
+                    </td>
+                    <td>
+                        @(item.Trang_Thai ? "Đã duyệt" : "Chưa duyệt")
+                    </td>
+                    <td>
+
+                        <a class="details" href="@Url.Action("DetailsLCS", "QLLCS", new { id = item.Ma_Lich })">Xem chi tiết</a>
+
+                    </td>
+                    @{ a++;}
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="d-flex align-items-center justify-content-center mt-4">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                @Html.Raw(Model.HasPreviousPage ? $"<li class='page-item'><a class='page-link' href='{Url.Action("getListLCS", new { page = 1, searchString = ViewBag.CurrentFilter })}'>&laquo;</a></li>" : "")
+                @for (int i = 1; i <= Model.PageCount; i++)
+                {
+                    <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                        <a class="page-link" href="@Url.Action("getListLCS", new { page = i, searchString = ViewBag.CurrentFilter })">@i</a>
+                    </li>
+                }
+                @Html.Raw(Model.HasNextPage ? $"<li class='page-item'><a class='page-link' href='{Url.Action("getListLCS", new { page = Model.PageCount, searchString = ViewBag.CurrentFilter })}'>&raquo;</a></li>" : "")
+            </ul>
+        </nav>
+    </div>
+</div>

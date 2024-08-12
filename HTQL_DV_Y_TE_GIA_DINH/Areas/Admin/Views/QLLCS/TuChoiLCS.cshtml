@@ -1,0 +1,129 @@
+﻿@model HTQL_DV_Y_TE_GIA_DINH.LICH_CHAM_SOC
+
+@{
+    ViewBag.Title = "TuChoiLCS";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>TuChoiLCS</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>LICH_CHAM_SOC</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ma_Lich)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ma_Lich)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.So_Hoa_Don)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.So_Hoa_Don)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ma_Dich_Vu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ma_Dich_Vu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ma_TK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ma_TK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ngay_Bat_Dau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngay_Bat_Dau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.So_Ngay_Thue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.So_Ngay_Thue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Yeu_Cau_Chi_Dinh_NVCS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yeu_Cau_Chi_Dinh_NVCS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ten_NVCS_Muon_Chon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten_NVCS_Muon_Chon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mo_Ta_Benh_Ly)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mo_Ta_Benh_Ly)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ho_Ten_Benh_Nhan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ho_Ten_Benh_Nhan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dia_Chi_Noi_Cham_Soc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dia_Chi_Noi_Cham_Soc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.So_Dien_Thoai_Nguoi_Thue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.So_Dien_Thoai_Nguoi_Thue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Trang_Thai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Trang_Thai)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

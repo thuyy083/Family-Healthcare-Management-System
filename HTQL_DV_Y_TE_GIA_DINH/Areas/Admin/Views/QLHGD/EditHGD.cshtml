@@ -1,0 +1,66 @@
+﻿@model HTQL_DV_Y_TE_GIA_DINH.HO_GIA_DINH
+
+@{
+    ViewBag.Title = "EditHGD";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style>
+    input {
+        max-width: 100%;
+    }
+
+    .nut {
+        background-color: #00b39d;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+        .nut:hover {
+            background-color: #00a48f;
+        }
+</style>
+<div class="container my-2 p-2">
+    <h4>CHỈNH SỬA THÔNG TIN HỘ GIA ĐÌNH</h4>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="row col-md-6 g-2 mx-auto shadow p-4">
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+            <div class="col-12">
+                <label class="form-label">Số điện thoại:</label>
+                @Html.EditorFor(model => model.SoDienThoai_HGD, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SoDienThoai_HGD, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-12">
+                <label class="form-label">Địa chỉ:</label>
+                @Html.EditorFor(model => model.Dia_Chi_HGD, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Dia_Chi_HGD, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-12">
+                <label>Họ và tên chủ hộ:</label>
+                @Html.EditorFor(model => model.Chu_Ho, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Chu_Ho, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3 d-flex">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Lưu" class="btn nut" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        <br />
+        <button type="button" onclick="window.location.href='@Url.Action("DetailsHGD", "QLHGD", new { id = Model.Ma_HGD })'" class="btn nut">Quay lại</button>
+    </div>
+</div>

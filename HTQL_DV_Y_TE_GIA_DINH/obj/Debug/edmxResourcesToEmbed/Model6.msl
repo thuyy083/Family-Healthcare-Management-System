@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="csdl_HTQLModel6StoreContainer" CdmEntityContainer="csdl_HTQLEntities6">
+    <EntitySetMapping Name="BAC_SI_GIA_DINH">
+      <EntityTypeMapping TypeName="csdl_HTQLModel6.BAC_SI_GIA_DINH">
+        <MappingFragment StoreEntitySet="BAC_SI_GIA_DINH">
+          <ScalarProperty Name="Mat_Khau" ColumnName="Mat_Khau" />
+          <ScalarProperty Name="Ma_TK" ColumnName="Ma_TK" />
+          <ScalarProperty Name="Ma_Quyen" ColumnName="Ma_Quyen" />
+          <ScalarProperty Name="Ho_Ten" ColumnName="Ho_Ten" />
+          <ScalarProperty Name="Ngay_Sinh" ColumnName="Ngay_Sinh" />
+          <ScalarProperty Name="So_CCCD" ColumnName="So_CCCD" />
+          <ScalarProperty Name="Gioi_Tinh" ColumnName="Gioi_Tinh" />
+          <ScalarProperty Name="Dia_Chi" ColumnName="Dia_Chi" />
+          <ScalarProperty Name="So_Dien_Thoai" ColumnName="So_Dien_Thoai" />
+          <ScalarProperty Name="Chuyen_mon" ColumnName="Chuyen_mon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BENH">
+      <EntityTypeMapping TypeName="csdl_HTQLModel6.BENH">
+        <MappingFragment StoreEntitySet="BENH">
+          <ScalarProperty Name="Ma_Benh" ColumnName="Ma_Benh" />
+          <ScalarProperty Name="Ten_Benh" ColumnName="Ten_Benh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BENH_NHAN">
+      <EntityTypeMapping TypeName="csdl_HTQLModel6.BENH_NHAN">
+        <MappingFragment StoreEntitySet="BENH_NHAN">
+          <ScalarProperty Name="Ma_TK" ColumnName="Ma_TK" />
+          <ScalarProperty Name="Ma_HGD" ColumnName="Ma_HGD" />
+          <ScalarProperty Name="Ma_Quyen" ColumnName="Ma_Quyen" />
+          <ScalarProperty Name="Ho_Ten" ColumnName="Ho_Ten" />
+          <ScalarProperty Name="Ngay_Sinh" ColumnName="Ngay_Sinh" />
+          <ScalarProperty Name="So_CCCD" ColumnName="So_CCCD" />
+          <ScalarProperty Name="Gioi_Tinh" ColumnName="Gioi_Tinh" />
+          <ScalarProperty Name="Dia_Chi" ColumnName="Dia_Chi" />
+          <ScalarProperty Name="So_Dien_Thoai" ColumnName="So_Dien_Thoai" />
+          <ScalarProperty Name="Mat_Khau" ColumnName="Mat_Khau" />
+          <ScalarProperty Name="So_BHYT" ColumnName="So_BHYT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DICH_VU_CHAM_SOC_NGUOI_BENH">
+      <EntityTypeMapping TypeName="csdl_HTQLModel6.DICH_VU_CHAM_SOC_NGUOI_BENH">
+        <MappingFragment StoreEntitySet="DICH_VU_CHAM_SOC_NGUOI_BENH">
+          <ScalarProperty Name="Ma_Dich_Vu" ColumnName="Ma_Dich_Vu" />
+          <ScalarProperty Name="Ten_Dich_Vu" ColumnName="Ten_Dich_Vu" />
+          <ScalarProperty Name="Mo_Ta" ColumnName="Mo_Ta" />
+          <ScalarProperty Name="Noi_Cham_Soc" ColumnName="Noi_Cham_Soc" />
+          <ScalarProperty Name="Gioi_Tinh_Cua_Nhan_Vien_Cham_Soc" ColumnName="Gioi_Tinh_Cua_Nhan_Vien_Cham_Soc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DON_GIA_DICH_VU">
+      <EntityTypeMapping TypeName="csdl_HTQLModel6.DON_GIA_DICH_VU">
+        <MappingFragment StoreEntitySet="DON_GIA_DICH_VU">
+          <ScalarProperty Name="Ma_Dich_Vu" ColumnName="Ma_Dich_Vu" />
+          <ScalarProperty Name="Ngay_Gio" ColumnName="Ngay_Gio" />
+          <ScalarProperty Name="Don_Gia" ColumnName="Don_Gia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HO_GIA_DINH">
+      <EntityTypeMapping TypeName="csdl_HTQLModel6.HO_GIA_DINH">
+        <MappingFragment StoreEntitySet="HO_GIA_DINH">
+          <ScalarProperty Name="Ma_HGD" ColumnName="Ma_HGD" />
+          <ScalarProperty Name="SoDienThoai_HGD" ColumnName="SoDienThoai_HGD" />
+          <ScalarProperty Name="Dia_Chi_HGD" ColumnName="Dia_Chi_HGD" />
+          <ScalarProperty Name="Chu_Ho" ColumnName="Chu_Ho" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HOA_DON">
+      <EntityTypeMapping TypeName="csdl_HTQLModel6.HOA_DON">
+        <MappingFragment StoreEntitySet="HOA_DON">
+          <ScalarProperty Name="So_Hoa_Don" ColumnName="So_Hoa_Don" />
+          <ScalarProperty Name="Ngay_Gio" ColumnName="Ngay_Gio" />
+          <ScalarProperty Name="Ma_Lich" ColumnName="Ma_Lich" />
+          <ScalarProperty Name="Ma_TK" ColumnName="Ma_TK" />
+          <ScalarProperty Name="Tong_Tien" ColumnName="Tong_Tien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LICH_CHAM_SOC">
+      <EntityTypeMapping TypeName="csdl_HTQLModel6.LICH_CHAM_SOC">
+        <MappingFragment StoreEntitySet="LICH_CHAM_SOC">
+          <ScalarProperty Name="Ma_Lich" ColumnName="Ma_Lich" />
+          <ScalarProperty Name="So_Hoa_Don" ColumnName="So_Hoa_Don" />
+          <ScalarProperty Name="Ma_Dich_Vu" ColumnName="Ma_Dich_Vu" />
+          <ScalarProperty Name="Ma_TK" ColumnName="Ma_TK" />
+          <ScalarProperty Name="Ngay_Bat_Dau" ColumnName="Ngay_Bat_Dau" />
+          <ScalarProperty Name="So_Ngay_Thue" ColumnName="So_Ngay_Thue" />
+          <ScalarProperty Name="Yeu_Cau_Chi_Dinh_NVCS" ColumnName="Yeu_Cau_Chi_Dinh_NVCS" />
+          <ScalarProperty Name="Ten_NVCS_Muon_Chon" ColumnName="Ten_NVCS_Muon_Chon" />
+          <ScalarProperty Name="Mo_Ta_Benh_Ly" ColumnName="Mo_Ta_Benh_Ly" />
+          <ScalarProperty Name="Ho_Ten_Benh_Nhan" ColumnName="Ho_Ten_Benh_Nhan" />
+          <ScalarProperty Name="Dia_Chi_Noi_Cham_Soc" ColumnName="Dia_Chi_Noi_Cham_Soc" />
+          <ScalarProperty Name="So_Dien_Thoai_Nguoi_Thue" ColumnName="So_Dien_Thoai_Nguoi_Thue" />
+          <ScalarProperty Name="Trang_Thai" ColumnName="Trang_Thai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NHAN_VIEN_CHAM_SOC">
+      <EntityTypeMapping TypeName="csdl_HTQLModel6.NHAN_VIEN_CHAM_SOC">
+        <MappingFragment StoreEntitySet="NHAN_VIEN_CHAM_SOC">
+          <ScalarProperty Name="Ma_TK" ColumnName="Ma_TK" />
+          <ScalarProperty Name="Ma_Quyen" ColumnName="Ma_Quyen" />
+          <ScalarProperty Name="Ho_Ten" ColumnName="Ho_Ten" />
+          <ScalarProperty Name="Ngay_Sinh" ColumnName="Ngay_Sinh" />
+          <ScalarProperty Name="So_CCCD" ColumnName="So_CCCD" />
+          <ScalarProperty Name="Gioi_Tinh" ColumnName="Gioi_Tinh" />
+          <ScalarProperty Name="Dia_Chi" ColumnName="Dia_Chi" />
+          <ScalarProperty Name="So_Dien_Thoai" ColumnName="So_Dien_Thoai" />
+          <ScalarProperty Name="Mat_Khau" ColumnName="Mat_Khau" />
+          <ScalarProperty Name="Trang_Thai_Lam_Viec" ColumnName="Trang_Thai_Lam_Viec" />
+          <ScalarProperty Name="Kinh_nghiem" ColumnName="Kinh_nghiem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHAN_CONG_CHAM_SOC">
+      <EntityTypeMapping TypeName="csdl_HTQLModel6.PHAN_CONG_CHAM_SOC">
+        <MappingFragment StoreEntitySet="PHAN_CONG_CHAM_SOC">
+          <ScalarProperty Name="Ma_HGD" ColumnName="Ma_HGD" />
+          <ScalarProperty Name="Ma_TK" ColumnName="Ma_TK" />
+          <ScalarProperty Name="Thoi_Gian_Bat_Dau" ColumnName="Thoi_Gian_Bat_Dau" />
+          <ScalarProperty Name="Thoi_Gian_Ket_Thuc" ColumnName="Thoi_Gian_Ket_Thuc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QUAN_TRI_VIEN">
+      <EntityTypeMapping TypeName="csdl_HTQLModel6.QUAN_TRI_VIEN">
+        <MappingFragment StoreEntitySet="QUAN_TRI_VIEN">
+          <ScalarProperty Name="Ma_TK" ColumnName="Ma_TK" />
+          <ScalarProperty Name="Ma_Quyen" ColumnName="Ma_Quyen" />
+          <ScalarProperty Name="Ho_Ten" ColumnName="Ho_Ten" />
+          <ScalarProperty Name="Ngay_Sinh" ColumnName="Ngay_Sinh" />
+          <ScalarProperty Name="So_CCCD" ColumnName="So_CCCD" />
+          <ScalarProperty Name="Gioi_Tinh" ColumnName="Gioi_Tinh" />
+          <ScalarProperty Name="Dia_Chi" ColumnName="Dia_Chi" />
+          <ScalarProperty Name="So_Dien_Thoai" ColumnName="So_Dien_Thoai" />
+          <ScalarProperty Name="Mat_Khau" ColumnName="Mat_Khau" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QUYEN_TRUY_CAP">
+      <EntityTypeMapping TypeName="csdl_HTQLModel6.QUYEN_TRUY_CAP">
+        <MappingFragment StoreEntitySet="QUYEN_TRUY_CAP">
+          <ScalarProperty Name="Ma_Quyen" ColumnName="Ma_Quyen" />
+          <ScalarProperty Name="Ten_Quyen" ColumnName="Ten_Quyen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SO_THEO_DOI_SUC_KHOE">
+      <EntityTypeMapping TypeName="csdl_HTQLModel6.SO_THEO_DOI_SUC_KHOE">
+        <MappingFragment StoreEntitySet="SO_THEO_DOI_SUC_KHOE">
+          <ScalarProperty Name="Ma_TK" ColumnName="Ma_TK" />
+          <ScalarProperty Name="BAC_Ma_TK" ColumnName="BAC_Ma_TK" />
+          <ScalarProperty Name="Ngay_Gio" ColumnName="Ngay_Gio" />
+          <ScalarProperty Name="So_Thu_Tu" ColumnName="So_Thu_Tu" />
+          <ScalarProperty Name="Cac_Thong_So_Suc_Khoe" ColumnName="Cac_Thong_So_Suc_Khoe" />
+          <ScalarProperty Name="Don_Thuoc" ColumnName="Don_Thuoc" />
+          <ScalarProperty Name="Lieu_Dung" ColumnName="Lieu_Dung" />
+          <ScalarProperty Name="So_Luong_Thuoc" ColumnName="So_Luong_Thuoc" />
+          <ScalarProperty Name="Chi_Dinh_Dinh_Duong" ColumnName="Chi_Dinh_Dinh_Duong" />
+          <ScalarProperty Name="Ghi_Chu" ColumnName="Ghi_Chu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAI_KHOAN">
+      <EntityTypeMapping TypeName="csdl_HTQLModel6.TAI_KHOAN">
+        <MappingFragment StoreEntitySet="TAI_KHOAN">
+          <ScalarProperty Name="Ma_TK" ColumnName="Ma_TK" />
+          <ScalarProperty Name="Ma_Quyen" ColumnName="Ma_Quyen" />
+          <ScalarProperty Name="Ho_Ten" ColumnName="Ho_Ten" />
+          <ScalarProperty Name="Ngay_Sinh" ColumnName="Ngay_Sinh" />
+          <ScalarProperty Name="So_CCCD" ColumnName="So_CCCD" />
+          <ScalarProperty Name="Gioi_Tinh" ColumnName="Gioi_Tinh" />
+          <ScalarProperty Name="Dia_Chi" ColumnName="Dia_Chi" />
+          <ScalarProperty Name="So_Dien_Thoai" ColumnName="So_Dien_Thoai" />
+          <ScalarProperty Name="Mat_Khau" ColumnName="Mat_Khau" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THOI_DIEM">
+      <EntityTypeMapping TypeName="csdl_HTQLModel6.THOI_DIEM">
+        <MappingFragment StoreEntitySet="THOI_DIEM">
+          <ScalarProperty Name="Ngay_Gio" ColumnName="Ngay_Gio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CHI_TIET_CHUAN_DOAN_BENH" TypeName="csdl_HTQLModel6.CHI_TIET_CHUAN_DOAN_BENH" StoreEntitySet="CHI_TIET_CHUAN_DOAN_BENH">
+      <EndProperty Name="SO_THEO_DOI_SUC_KHOE">
+        <ScalarProperty Name="Ma_TK" ColumnName="Ma_TK" />
+        <ScalarProperty Name="BAC_Ma_TK" ColumnName="BAC_Ma_TK" />
+        <ScalarProperty Name="Ngay_Gio" ColumnName="Ngay_Gio" />
+        <ScalarProperty Name="So_Thu_Tu" ColumnName="So_Thu_Tu" />
+      </EndProperty>
+      <EndProperty Name="BENH">
+        <ScalarProperty Name="Ma_Benh" ColumnName="Ma_Benh" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

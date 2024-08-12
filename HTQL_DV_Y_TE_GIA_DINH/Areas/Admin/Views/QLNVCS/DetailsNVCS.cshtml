@@ -1,0 +1,150 @@
+﻿@model HTQL_DV_Y_TE_GIA_DINH.NHAN_VIEN_CHAM_SOC
+
+@{
+    ViewBag.Title = "DetailsNVCS";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .icon1 {
+        padding: 7px 12px;
+        color: #646464;
+        background-color: #f0f1f3;
+        font-size: 18px;
+        border-radius: 4px;
+    }
+
+        .icon1:hover {
+            background-color: #00c6a9;
+            color: #fff;
+        }
+
+    h2 {
+        text-align: left;
+    }
+
+    h5 {
+        text-align: left;
+    }
+
+    .my-3 {
+        text-decoration: none;
+        color: #008a6e;
+        font-weight: bold;
+    }
+</style>
+
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row">
+        <div class="col-8">
+
+            <div class="mt-2">
+                <h5>NHÂN VIÊN</h5>
+                <h2>@Html.DisplayFor(model => model.Ho_Ten)</h2>
+            </div>
+
+            <div class="mt-2">Giới tính: @(Model.Gioi_Tinh ? "Nam" : "Nữ")</div>
+            <div class="mt-2">Kinh nghiệm: @Html.DisplayFor(model => model.Kinh_nghiem)</div>
+            <div class="mt-2">Số CCCD:  @Html.DisplayFor(model => model.So_CCCD)</div>
+            <div class="mt-2">
+                Số điện thoại: @Html.DisplayFor(model => model.So_Dien_Thoai)
+            </div>
+            <div class="mt-2">
+                Ngày sinh: @Model.Ngay_Sinh.ToString("dd/MM/yyyy")
+            </div>
+
+            <div class="mt-2">
+                Địa chỉ: @Html.DisplayFor(model => model.Dia_Chi)
+            </div>
+            <div class="mt-4">
+                <a href="@Url.Action("EditNVCS", new { id = Model.Ma_TK })" class="icon1"><i class="far fa-edit"></i></a>
+                <a href="@Url.Action("DeleteNVCS", new { id = Model.Ma_TK })" class="icon1" onclick="return confirmDelete();"><i class="bi bi-trash"></i></a>
+
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+
+
+<div class="container-fluid">
+    <a href="@Url.Action("getListBS", "QLBS")" class="my-3">Quay về</a>
+
+    @if (Model.HOA_DON.Count > 0)
+    {
+        <h2>PHÂN CÔNG CHĂM SÓC</h2>
+        <table class="table table-bordered" style="border: 1px solid; border-color: #00c6a9;">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        STT
+                    </th>
+                    <th scope="col">
+                        Chủ hộ
+                    </th>
+                    <th scope="col">
+                        Thời gian bắt đầu
+                    </th>
+                    <th scope="col">
+                        Thời gian kết thúc
+                    </th>
+                    <th scope="col">
+                        Số điện thoại hộ gia đình
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ int i = 1;}
+                @foreach (var item in Model.HOA_DON)
+                {
+                    <tr>
+                        <td>
+                            @i
+                        </td>
+                        <td>
+                            @item.LICH_CHAM_SOC.Ho_Ten_Benh_Nhan
+                        </td>
+                        <td>
+                            @item.LICH_CHAM_SOC.Ngay_Bat_Dau.ToString("dd/MM/yyyy")
+                        </td>
+                        <td>
+                            @item.LICH_CHAM_SOC.So_Ngay_Thue
+                        </td>
+                        <td>
+                            @item.LICH_CHAM_SOC.Mo_Ta_Benh_Ly
+                        </td>
+                        <td>
+                            @item.Tong_Tien
+                        </td>
+                        @{ i++;}
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    }
+    else
+    {
+        <p class="fst-italic" style="font:bold;">Chưa có lịch chăm sóc</p>
+    }
+
+
+</div>
+@if (TempData["LoiKhoaNgoai"] != null)
+{
+    <script>
+        alert('Nhân viên này đã có lịch chăm sóc. Không thể xóa.');
+
+        /**/
+    </script>
+}
+
+
+
+<script>
+    function confirmDelete() {
+        return confirm('Bạn có chắc chắn muốn xóa không?');
+    }
+</script>

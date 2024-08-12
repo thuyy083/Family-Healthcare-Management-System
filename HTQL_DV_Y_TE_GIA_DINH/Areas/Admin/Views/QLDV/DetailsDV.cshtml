@@ -1,0 +1,185 @@
+﻿@model HTQL_DV_Y_TE_GIA_DINH.DICH_VU_CHAM_SOC_NGUOI_BENH
+
+@{
+    ViewBag.Title = "DetailsDV";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .icon1 {
+        padding: 7px 12px;
+        color: #646464;
+        background-color: #f0f1f3;
+        font-size: 18px;
+        border-radius: 4px;
+    }
+
+        .icon1:hover {
+            background-color: #00c6a9;
+            color: #fff;
+        }
+
+    h2 {
+        text-align: left;
+    }
+
+    h5 {
+        text-align: left;
+    }
+
+    .my-3 {
+        text-decoration: none;
+        color: #008a6e;
+        font-weight: bold;
+    }
+
+    .table-striped-custom tbody tr:nth-child(odd) td {
+        background-color: #C6F2E7;
+    }
+
+    .table-striped-custom tbody tr:nth-child(even) td {
+        background-color: #C6F2E7;
+    }
+
+    .nut {
+        background-color: #00b39d;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+        .nut:hover {
+            background-color: #00a48f;
+        }
+</style>
+<h3>Chi tiết dịch vụ</h3>
+
+<div class="border">
+    <div class="row">
+        <div class="col">
+            <table class="table table-light table-striped table-striped-custom" cellspacing="0" cellpadding="0">
+                <thead class="table-dark">
+                    <h6>THÔNG TIN DỊCH VỤ</h6>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td width="30%" class="border">
+                            <div class="bg ">Tên dịch vụ</div>
+                        </td>
+                        <td width="70%" class="border">
+                            <div>
+                                @Html.DisplayFor(model => model.Ten_Dich_Vu)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="border">
+                            <div class="bg">Mô tả</div>
+                        </td>
+                        <td width="70%" class="border">
+                            <div>
+                                @if (Model != null)
+                                {
+                                    @Html.DisplayFor(model => model.Mo_Ta)
+                                }
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td width="30%" class="border">
+                            <div class="bg">Nơi chăm sóc</div>
+                        </td>
+                        <td width="70%" class="border">
+                            <div>
+                                @Html.DisplayFor(model => model.Noi_Cham_Soc)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="border">
+                            <div class="bg">Giới tính nhân viên</div>
+                        </td>
+                        <td width="70%" class="border">
+                            <div>
+                                @if (Model != null)
+                                {
+                                    @(Model.Gioi_Tinh_Cua_Nhan_Vien_Cham_Soc ? "Nam" : "Nữ")
+                                }
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+
+
+            <table class="table table-light table-striped table-striped-custom" cellspacing="0" cellpadding="0">
+                <thead>
+                    <h6>ĐƠN GIÁ DỊCH VỤ</h6>
+                </thead>
+                @if (Model.DON_GIA_DICH_VU.Count > 0)
+                {
+                    <tbody>
+                        <tr>
+                            <th>
+                                <label>STT</label>
+                            </th>
+                            <th>
+                                <label>Ngày giờ</label>
+                            </th>
+                            <th>
+                                <label>Đơn giá</label>
+                            </th>
+
+                        </tr>
+                        @{ int i = 1;}
+                        @foreach (var item in Model.DON_GIA_DICH_VU)
+                        {
+                            <tr>
+                                <td>
+                                    @i
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Ngay_Gio)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Don_Gia)
+                                </td>
+                                @{ i++;}
+                            </tr>
+                        }
+
+                    </tbody>
+                }
+            </table>
+
+        </div>
+    </div>
+</div>
+<div class="mt-4">
+    <a href="@Url.Action("EditDV", new { id = Model.Ma_Dich_Vu })" class="icon1"><i class="far fa-edit"></i></a>
+    <a href="@Url.Action("DeleteDV", new { id = Model.Ma_Dich_Vu })" class="icon1" onclick="return confirmDelete();"><i class="bi bi-trash"></i></a>
+
+    <br />
+</div>
+<br />
+<button type="button" onclick="window.location.href='@Url.Action("CreateDonGia", "QLDV", new { id = Model.Ma_Dich_Vu })'" class="btn nut">Thêm đơn giá</button>
+@if (TempData["LoiKhoaNgoai"] != null)
+{
+    <script>
+        alert('Dịch vụ này đã có người đặt lịch. Không thể xóa.');
+
+        /**/
+    </script>
+}
+
+
+<script>
+    function confirmDelete() {
+        return confirm('Bạn có chắc chắn muốn xóa không?');
+    }
+</script>

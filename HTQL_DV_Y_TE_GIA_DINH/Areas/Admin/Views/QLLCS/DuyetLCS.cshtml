@@ -1,0 +1,77 @@
+﻿@model HTQL_DV_Y_TE_GIA_DINH.HOA_DON
+
+@{
+    ViewBag.Title = "DuyetLCS";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style>
+    input {
+        max-width: 100%;
+    }
+    select {
+        max-width: 100%;
+    }
+    .nut {
+        background-color: #00b39d;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+        .nut:hover {
+            background-color: #00a48f;
+        }
+</style>
+<div class="container my-2 p-2">
+    <h3>Duyệt lịch chăm sóc</h3>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row col-md-6 g-2 mx-auto shadow p-4">
+            <hr />
+            <div class="form_container">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="col-12">
+                    <label class="form-label">Mã lịch</label>
+                    <div>
+                        <input class="form-control" id="Ma_Lich" name="Ma_Lich" type="text" value="@ViewBag.Ma_Lich" readonly />
+
+                        @Html.ValidationMessageFor(model => model.Ma_Lich, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label">Tổng tiền</label>
+                    <div>
+                        <input class="form-control" id="Tong_Tien" name="Tong_Tien" type="text" value="@ViewBag.Tong_Tien" readonly />
+
+                        @Html.ValidationMessageFor(model => model.Tong_Tien, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label">Tên nhân viên</label>
+                    <div>
+                        @Html.DropDownListFor(model => model.Ma_TK, ViewBag.Ma_TK as IEnumerable<SelectListItem>, "Chọn nhân viên", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Ma_TK, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Lưu" class="btn nut" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+
+<div>
+    <button type="button" onclick="window.location.href='@Url.Action("DetailsLCS", "QLLCS", new { id = ViewBag.Ma_Lich })'" class="btn nut">Quay lại</button>
+</div>
+</div>

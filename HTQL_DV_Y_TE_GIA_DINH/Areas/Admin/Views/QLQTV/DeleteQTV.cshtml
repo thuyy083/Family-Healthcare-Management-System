@@ -1,0 +1,97 @@
+﻿@model HTQL_DV_Y_TE_GIA_DINH.QUAN_TRI_VIEN
+
+@{
+    ViewBag.Title = "DeleteQTV";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DeleteQTV</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>QUAN_TRI_VIEN</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ma_TK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ma_TK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ma_Quyen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ma_Quyen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ho_Ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ho_Ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ngay_Sinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngay_Sinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.So_CCCD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.So_CCCD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gioi_Tinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gioi_Tinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dia_Chi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dia_Chi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.So_Dien_Thoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.So_Dien_Thoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mat_Khau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mat_Khau)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "getListQTV")
+        </div>
+    }
+</div>

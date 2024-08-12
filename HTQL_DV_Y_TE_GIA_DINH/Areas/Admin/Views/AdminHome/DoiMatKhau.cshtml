@@ -1,0 +1,36 @@
+﻿@model HTQL_DV_Y_TE_GIA_DINH.Models.DoiMatKhauViewModel
+
+@{
+    ViewBag.Title = "DoiMatKhau";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Đổi mật khẩu</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label>Mật khẩu cũ</label>
+        @Html.EditorFor(model => model.MatKhauCu, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.MatKhauCu, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        <label>Mật khẩu mới</label>
+        @Html.EditorFor(model => model.MatKhauMoi, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.MatKhauMoi, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label>Xác nhận mật khẩu</label>
+        @Html.EditorFor(model => model.XacNhanMatKhau, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.XacNhanMatKhau, "", new { @class = "text-danger" })
+    </div>
+
+    <input type="submit" value="Save" class="btn" />
+}

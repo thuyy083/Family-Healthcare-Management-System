@@ -1,0 +1,168 @@
+﻿@model HTQL_DV_Y_TE_GIA_DINH.HO_GIA_DINH
+
+@{
+    ViewBag.Title = "DetailsHGD";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .icon1 {
+        padding: 7px 12px;
+        color: #646464;
+        background-color: #f0f1f3;
+        font-size: 18px;
+        border-radius: 4px;
+    }
+
+        .icon1:hover {
+            background-color: #00c6a9;
+            color: #fff;
+        }
+
+    h2 {
+        text-align: left;
+    }
+
+    h5 {
+        text-align: left;
+    }
+
+    .my-3 {
+        text-decoration: none;
+        color: #008a6e;
+        font-weight: bold;
+    }
+    .nut {
+        background-color: #00b39d;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+        .nut:hover {
+            background-color: #00a48f;
+        }
+</style>
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row">
+        <div class="col-8">
+
+            <div class="mt-2">
+                <h5>Hộ gia đình Ông/Bà</h5>
+                <h2>@Html.DisplayFor(model => model.Chu_Ho)</h2>
+            </div>
+
+            <div class="mt-2">Số điện thoại: @Html.DisplayFor(model => model.SoDienThoai_HGD)</div>
+            <div class="mt-2">Địa chỉ:  @Html.DisplayFor(model => model.Dia_Chi_HGD)</div>
+            <div class="mt-4">
+                <a href="@Url.Action("EditHGD", new { id = Model.Ma_HGD })" class="icon1"><i class="far fa-edit"></i></a>
+                <a href="@Url.Action("DeleteHGD", new { id = Model.Ma_HGD })" class="icon1" onclick="return confirmDelete();"><i class="bi bi-trash"></i></a>
+
+                <br />
+            </div>
+            <div>
+                <br />
+                <button type="button" onclick="window.location.href='@Url.Action("CreateBN", "QLBN", new { id = Model.Ma_HGD })'" class="btn nut">Thêm thành viên</button>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="container-fluid">
+    <a href="@Url.Action("getListHGD", "QLHGD")" class="my-3">Quay về</a>
+
+    @if (Model.BENH_NHAN.Count > 0)
+    {
+        <h6>THÀNH VIÊN TRONG GIA ĐÌNH</h6>
+        <table class="table table-bordered" style="border: 1px solid; border-color: #00c6a9;">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        STT
+                    </th>
+                    <th scope="col">
+                        Họ và tên
+                    </th>
+                    <th scope="col">
+                        Ngày sinh
+                    </th>
+                    <th scope="col">
+                        Số căn cước công dân
+                    </th>
+                    <th scope="col">
+                        Giới tính
+                    </th>
+                    <th scope="col">
+                        Địa chỉ
+                    </th>
+                    <th scope="col">
+                        Số điện thoại
+                    </th>
+                    <th scope="col">
+                        Số BHYT
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ int i = 1;}
+                @foreach (var item in Model.BENH_NHAN)
+                {
+                    <tr>
+                        <td>
+                            @i
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ho_Ten)
+                        </td>
+                        <td>
+                            @item.Ngay_Sinh.ToString("dd/MM/yyyy")
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.So_CCCD)
+                        </td>
+                        <td>
+                            @(item.Gioi_Tinh ? "Nam" : "Nữ")
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Dia_Chi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.So_Dien_Thoai)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.So_BHYT)
+                        </td>
+                        @{ i++;}
+                    </tr>
+
+
+
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="fst-italic" style="font:bold;">Chưa có thành viên</p>
+    }
+</div>
+
+
+@if (TempData["LoiKhoaNgoai"] != null)
+{
+    <script>
+        alert('Gia đình này đã có thành viên. Vui lòng xóa thành viên trong gia đình trước.');
+
+        /**/
+    </script>
+}
+
+
+
+<script>
+    function confirmDelete() {
+        return confirm('Bạn có chắc chắn muốn xóa không?');
+    }
+</script>
